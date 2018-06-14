@@ -23,7 +23,7 @@ def vp_start_gui():
     """Starting point when module is the main routine."""
     global val, w, root
     root = Tk()
-    root.state("zoomed")
+    root.state("normal")
     top = New_Toplevel(root)
     front_end_support.init(root, top)
     root.mainloop()
@@ -236,8 +236,21 @@ class New_Toplevel:
         self.Stage_input.configure(insertbackground="black")
         self.Stage_input.configure(selectbackground="#c4c4c4")
         self.Stage_input.configure(selectforeground="black")
-        self.Stage_input.insert(END,
-                                'C:/Program Files (x86)/Common Files/MicroStrategy/Tomcat/apache-tomcat-8.0.30/webapps/MicroStrategy/WEB-INF/classes/resources/SAML/stage')
+
+        import os
+        import subprocess
+
+        try:
+            command = "locate classes/resources/SAML/stage"
+            process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+            output, error = process.communicate()
+            stage_path = output.split("\n", 1)[0]
+            self.Stage_input.insert(END,stage_path)
+        except WindowsError:
+            print("Running on Windows")
+            self.Stage_input.insert(END,
+                                    'C:/Program Files (x86)/Common Files/MicroStrategy/Tomcat/apache-tomcat-8.0.30/webapps/MicroStrategy/WEB-INF/classes/resources/SAML/stage')
+       # self.Stage_input.insert(END,"/opt/apache-tomcat-8.5.31/webapps/MicroStrategy/WEB-INF/classes/resources/SAML/stage")
 
         self.IDP_input = Entry(top)
         self.IDP_input.place(relx=0.35, rely=0.4, height=31, relwidth=0.6)
@@ -250,7 +263,7 @@ class New_Toplevel:
         self.IDP_input.configure(insertbackground="black")
         self.IDP_input.configure(selectbackground="#c4c4c4")
         self.IDP_input.configure(selectforeground="black")
-
+       # self.IDP_input.insert(END,"/opt/apache-tomcat-8.5.31/webapps/MicroStrategy/WEB-INF/classes/resources/SAML/stage/IDPMetadata.xml")
         self.IDP_input_browse = Button(top)
         self.IDP_input_browse.place(relx=0.2, rely=0.4, height=35, width=100)
         self.IDP_input_browse.configure(activebackground="#ffffff")

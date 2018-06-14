@@ -16,7 +16,7 @@ try:
 
     py3 = False
 except ImportError:
-    import tkinter.ttk as ttk
+  ####review fix  from tkinter import ttk
 
     py3 = True
 

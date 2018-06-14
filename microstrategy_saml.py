@@ -5,6 +5,8 @@ def microstrategy_saml_func(folder, IDP):
     from tomcat_actions import start_tomcat
     from file_movements import file_transfer
     from file_movements import web_xml_write
+    from os.path import join
+    from shutil import move
 
     #################################
 
@@ -17,6 +19,7 @@ def microstrategy_saml_func(folder, IDP):
     import os
     current = os.getcwd
 
+
     # the stop_tomcat function required the tomcat bin folder as an input. Will navigate the the bin folder and run the shutdown.sh script
 
     stop_tomcat(bin_folder)
@@ -24,12 +27,16 @@ def microstrategy_saml_func(folder, IDP):
 
     #################################
 
+
+
     # this function requires the target SAML  and the stage directories as inputs. The files in the staging will then be moved to the SAML directory
 
     file_transfer(folder, SAML)
     print('moved all the files in the stage folder to the saml folder\n')
 
+
     #################################
+
 
     # idp_changes handle the renaming and movements of the IDPMetadata
     # this function requires the target SAML directory as an input the function will prompt the user for the location of the file that will be renamed as IDPMetadata.xml the file will then be moved to the correct directory
@@ -37,12 +44,15 @@ def microstrategy_saml_func(folder, IDP):
     idp_changes(SAML, IDP)
     print('moved the idp file to the saml folder and made it named IDPMetadata.xml\n')
 
+
+
     #################################
 
     # web_xml_write handles writing to file the updated web.xml file
     # this function requires the the string array of the web.xml and the WEB-INF directory as an input
     web_xml_write(WEBINF, SAML)
     print('renamed the original web.xml to web_original.xml\n')
+
 
     #################################
 

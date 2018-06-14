@@ -1,7 +1,7 @@
 # noinspection PyUnusedLocal
 def web_xml_edits(webinf, SAML):
     import itertools
-    from etree import ElementTree
+    import xml.etree.ElementTree
     import os
     from os.path import join
     from shutil import move
@@ -9,7 +9,8 @@ def web_xml_edits(webinf, SAML):
     # get correct directory
     os.chdir(webinf)
 
-    root = ElementTree.parse("web_original.xml").getroot()
+    #root = ElementTree.parse("web_original.xml").getroot()
+    root = xml.etree.ElementTree.parse("web_original.xml").getroot()
     # b = root.getchildren()[39]
 
     servlet = root.getchildren()[2]
@@ -36,7 +37,7 @@ def web_xml_edits(webinf, SAML):
 
     with open("WebXmlChanges.txt") as f:
         it = itertools.chain('<root>', f, '</root>')
-        test = ElementTree.fromstringlist(it)
+        test = xml.etree.ElementTree.fromstringlist(it)
 
     # noinspection PyUnusedLocal,PyUnusedLocal
     msg = tkMessageBox.showinfo("MicroStrategy SAML Config",
@@ -61,7 +62,7 @@ def web_xml_edits(webinf, SAML):
 
     # ElementTree.dump(root)
 
-    tree = ElementTree.ElementTree(root)
+    tree = xml.etree.ElementTree.ElementTree(root)
     print('add the WebXmlChanges.txt content to web.xml\n')
     tree.write(open('web.xml', 'wb'))
 

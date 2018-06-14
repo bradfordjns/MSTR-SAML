@@ -63,7 +63,7 @@ Troubleshooting:
 
 
 
-Information:Hello
+Information:
 
 For any questions or enhancements please contact:
 

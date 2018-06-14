@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['C:\\Users\\bjones\\PycharmProjects\\XML_EDITS_GUI\\MicroStrategySAML_GUI.py'],
-             pathex=['C:\\Users\\bjones\\PycharmProjects\\XML_EDITS_GUI'],
+a = Analysis(['C:\\Users\\bjones\\Desktop\\linux_version\\MicroStrategySAML_GUI.py'],
+             pathex=['C:\\Users\\bjones\\Desktop\\linux_version'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -18,16 +18,12 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          exclude_binaries=True,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='MicroStrategySAML_GUI',
           debug=False,
           strip=False,
           upx=True,
-          console=False , version='C:\\Users\\bjones\\PycharmProjects\\XML_EDITS_GUI\\version.txt', icon='C:\\Users\\bjones\\PycharmProjects\\XML_EDITS_GUI\\KEY.ico')
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='MicroStrategySAML_GUI')
+          runtime_tmpdir=None,
+          console=False , version='C:\\Users\\bjones\\Desktop\\linux_version\\version.txt', icon='C:\\Users\\bjones\\Desktop\\linux_version\\KEY.ico')
