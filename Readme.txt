@@ -5,9 +5,9 @@ Note: This will only work currently as of 5/25/18 for the MicroStrategy Web and 
 
 The zipped folder contains two files:
 
-1. MicroStrategySAML_GUI_no_window.exe	-	command window will be hidden
+1. MicroStrategySAML_GUI_win.exe	-	command window will be hidden
 		
-2. MicroStrategySAML_GUI_with_window.exe	-	command window will be shown
+2. MicroStrategySAML_GUI_linux	-	command window will be shown
 
 	
 	
@@ -29,11 +29,10 @@ The zipped folder contains two files:
 		
 Troubleshooting:
 
-	1.	Use the MicroStrategySAML_GUI_with_window.exe file
-	2. 	Take a screenshot of the command window when the error occurs
-	3.	Collect the "Log_SAML_Config.txt" file that is created in the same folder where the executable is ran from
+	1. 	Take a screenshot of the command window when the error occurs
+	2.	Collect the "Log_SAML_Config.txt" file that is created in the same folder where the executable is ran from
 		- A successfull run will output a file that displays:
-
+		
 				pressed start button
 
 				got the idp information
@@ -59,9 +58,9 @@ Troubleshooting:
 				started tomcat
 
 				successfully ending last function
+		
 
-
-
+	
 
 Information:
 
